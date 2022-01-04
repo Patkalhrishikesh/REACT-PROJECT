@@ -1,28 +1,31 @@
+import { useState } from "react";
+
 export default function App() {
   return (
     <>
       <MyComponent />
-
     </>
   );
 }
 
 function MyComponent() {
+  let [counter, setCounter] = useState(0);
 
-  let username = "hrishikesh";
-  let email = "hrishikeshpatkal@gmail.com";
+  const increment = () => {
+    counter = counter + 1;
 
-  return <div>
-    <h1> learing inter polution {"ahmednagar".toUpperCase()} </h1>
-    <h1>
-      {username} {email}
-    </h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In veritatis illum placeat 
-          dolore quae esse unde illo aperiam fuga
-          voluptas possimus iste suscipit saepe 
-          mollitia odio quaerat eos, corporis nu
-          mquam!
-        </p>
-  
-  </div>;
+    // RERENDER THE UI :: UPDATE THE INNERHTML ; innerHTML
+    setCounter(counter);
+  };
+
+  return (
+    <div>
+      <h1>Counter Application</h1>
+      <input type="button" value="Click Me" onClick={increment} />
+        <div>
+          <h1>Like {counter}</h1>
+        </div>
+    
+    </div>
+  );
 }
